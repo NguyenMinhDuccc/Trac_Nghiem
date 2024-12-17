@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Sidebar from "./Sidebar";
 import { FaBars } from "react-icons/fa";
+import { Outlet } from "react-router-dom";
 
 type Props = {};
 
@@ -9,11 +10,19 @@ const Admin = (props: Props) => {
   return (
     <div className="flex h-screen">
       <div className="admin-sidebar">
-        <Sidebar collapsed={collapsed}/>
+        <Sidebar collapsed={collapsed} />
       </div>
-      <div className="admin-content">
-        <FaBars onClick={()=>{setCollapsed(!collapsed)}} />
-        <p>Content</p>
+      <div className="admin-content w-full">
+        <div className="admin-header border-2 border-sky-500">
+          <FaBars
+            onClick={() => {
+              setCollapsed(!collapsed);
+            }}
+          />
+        </div>
+        <div className="admin-main border-2 border-red-500">
+          <Outlet></Outlet>
+        </div>
       </div>
     </div>
   );

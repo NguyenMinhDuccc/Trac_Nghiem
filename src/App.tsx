@@ -4,6 +4,8 @@ import Header from "./components/Header/Header";
 import User from "./components/User/User";
 import Admin from "./components/Admin/Admin";
 import HomePage from "./components/Home/HomePage";
+import ManagerUser from "./components/Admin/Content/ManagerUser";
+import Dashboard from "./components/Admin/Content/DashBoar";
 
 const AppLayout = () => (
   <>
@@ -31,6 +33,17 @@ const App = () => {
     {
       path: "admin",
       element: <Admin />,
+      children: [
+        {
+          path: "",
+          element: <Dashboard />,
+        },
+        {
+          path: "manageuser",
+          element: <ManagerUser />,
+        }
+        
+      ],
     },
   ]);
 
